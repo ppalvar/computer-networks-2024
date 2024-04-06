@@ -2,8 +2,8 @@
 
 Console.WriteLine("Server configuration");
 
-Console.Write("Server (default <localhost>): "); var server = Console.ReadLine();
-Console.Write("Port (default <25>): "); var port = Convert.ToInt32(Console.ReadLine());
+Console.Write("Server (default <localhost>): "); var server = Console.ReadLine().EmptyOrNull() ?? "localhost";
+Console.Write("Port (default <25>): "); var port = Convert.ToInt32(Console.ReadLine().EmptyOrNull() ?? "25");
 
 var client = new SMTPClient(server, port);
 
