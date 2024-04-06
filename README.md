@@ -1,31 +1,7 @@
-# Redes de computadoras 2024
+# Redes de computadoras 2024 - Protocolo SMTP
 
-El objetivo del proyecto es desarrollar una implemetación desde cero de un cliente de un protocolo de la capa de aplicación del modelo TCP/IP. 
+El protocolo **SMTP** (Simple Mail Transfer Protocol) es un protocolo de red utilizado para el intercambio de mensajes de correo electrónico entre computadoras u otros dispositivos. Funciona en la capa de aplicación del modelo OSI, específicamente diseñado para la transferencia de mensajes de correo electrónico. SMTP se basa en un modelo cliente-servidor, donde el cliente inicia una conexión con el servidor y transmite el correo electrónico completo.
 
-Dicha implementacion debe estar completamente reflejada en github. Para ello cada equipo debe:
+El proceso de envío de un correo electrónico mediante SMTP comienza con el cliente estableciendo una conexión con el servidor SMTP, esperando un mensaje de bienvenida como "`220 Service ready`" . Luego, el cliente envía un comando `EHLO` para identificar al servidor. A continuación, el cliente inicia la transacción del correo con la orden `MAIL FROM`, especificando la dirección de correo desde la cual se enviará el mensaje. El servidor responde con "`250 OK`" si el origen es válido. Después, el cliente especifica los destinatarios con la orden `RCPT TO`, y por cada destinatario, el servidor responde con "`250 OK`" o "`550 No such user here`" si no encuentra al destinatario. Una vez que todos los destinatarios han sido especificados, el cliente envía la orden `DATA` para indicar que a continuación se enviarán los contenidos del mensaje. El servidor responde con "`354 Start mail input, end with <CRLF>.<CRLF>`", indicando cómo finalizar el mensaje. El cliente envía el cuerpo del mensaje, línea por línea, y al finalizar, el servidor responde con "`250 OK`" o un mensaje de error apropiado. Finalmente, el cliente puede cortar la conexión con la orden `QUIT`.
 
-1. Hacer un fork de este repositorio
-2. Abrir un Pull Request con el repo original. En dicho PR deben quedar reflejados los nombres de los integrantes, así como protocolo y grupo.
-
-No existe limitante en cuanto al lenguage de programación de la solución a emplear. Pero si debe cumplir el RFC correspondiente a cada uno de los protocolos.
-También es obligatorio el uso de sockets para la solucion computacional y queda absolutamente prohibido el empleo de alguna biblioteca de terceros que facilite el trabajo a realizar.
-
-Requerimientos mínimos para la entrega del proyecto y por tanto su evaluación:
-1. Breve descripción de la implementación propuesta del protocolo. 
-2. La solución se comunica exitosamente con un servidor del protocolo correspondiente.
-3. Cliente básico o de consola. 
-
-Extras que contribuyen a una evaluación positiva del proyecto:
-1. Interfaz visual
-2. Compatibilidad con las versiones seguras del protocolo.
-3. Originalidad/Creatividad.
-4. Implementacion del servidor
-
-Todos los equipos deben de estar conformados máximo de tres estudiantes. Sin excepciones. 
-Ante cualquier duda, si la misma se refiere a vías de implementación, se asume la más compleja. A excepción de que un profesor del claustro indique lo contrario.
-
-Protocolos a implementar:
-1. SMTP
-2. FTP
-3. HTTP
-4. IRC
+SMTPS es una extensión de SMTP que añade seguridad mediante la capa de sockets seguros (SSL) o la seguridad de la capa de transporte (TLS), protegiendo la conexión y garantizando la confidencialidad e integridad de la transmisión del correo electrónico.
